@@ -7,11 +7,14 @@ class Product {
         this.description = description;
         this.price = price;
     }
+
+
 }
 
 
 
-let products = [
+class ProductList{
+    products = [
         new Product(
           'PARALLEL UNIVERSE II UPTOWN STRAT®',
           'https://www.fmicassets.com/Damroot/ThumbnailJpg/10001/0176790760_gtr_frtbdydtl_001_nr.jpg',
@@ -25,7 +28,8 @@ let products = [
           79.99
         )
       ];
+}
 
-
+let products = new ProductList();
 
 print(products)
