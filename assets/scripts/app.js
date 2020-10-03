@@ -19,12 +19,15 @@ class ProductItem { // consider changing the class name
 
     render(){
         const elementToBeAdded = document.createElement('li');
+        elementToBeAdded.className = 'product-item';
         elementToBeAdded.innerHTML = `
         <div>
             <img src="${this.product.imageurl}" alt= ${this.product.name}">
-            <h2>${this.product.name}</h2>
-            <h3>${this.product.price}</h3>
-            <p> ${this.product.description}</p>
+            <div class="product-item_content">
+              <h2>${this.product.name}</h2>
+              <h3>${this.product.price}</h3>
+              <p> ${this.product.description}</p>
+            </div>
         </div>
         `;
         return elementToBeAdded;
@@ -34,9 +37,9 @@ class ProductItem { // consider changing the class name
 class ProductList{
     products = [
         new Product(
-          'PARALLEL UNIVERSE II UPTOWN STRAT®',
-          'https://www.fmicassets.com/Damroot/ThumbnailJpg/10001/0176790760_gtr_frtbdydtl_001_nr.jpg',
-          'Dapper and bold – the Uptown Strat® commands attention when it enters a room.',
+          'Fender STRAT® Amircan',
+          'https://www.kley-zemer.co.il/Media/Uploads/4(40).jpg',
+          'Dapper and bold – the fender Strat® commands attention when it enters a room.',
           1099.99
         ),
         new Product(
