@@ -55,6 +55,7 @@ class ProductList{
       render(){
           const renderHook = document.getElementById('app');
           const productsList = document.createElement('ul');
+          productsList.className = 'product-list';
           for (const product of this.products){
             print(product);
             const productToBeAdded = new ProductItem(product);
