@@ -27,7 +27,7 @@ class ProductItem { // consider changing the class name
             <img src="${this.product.imageurl}" alt= ${this.product.name}">
             <div class="product-item_content">
               <h2>${this.product.name}</h2>
-              <h3>${this.product.price}</h3>
+              <h3>${this.product.price}$</h3>
               <p> ${this.product.description}</p>
               <button>
               Add to cart
@@ -78,17 +78,23 @@ class ShoppingCart {
   
   set cartItems(value){
      this.items = value;
-     this.totalAmount.innerHTML = `<h2> Total \$${this.totalPrice}</h2>`;
   }
 
   get totalPrice(){
       const sum = this.items.reduce((pervValue,curItem) => pervValue+ curItem.price,0);
       return sum;
   }
+
+  updateTotalPriceToScreen(){
+    this.totalAmount.innerHTML = `<h2> Total \$${this.totalPrice.toFixed(2)}</h2>`;
+
+  }
+
   addProduct(product) {
     const updatedItems = [...this.items];
     updatedItems.push(product);
     this.cartItems = updatedItems;
+    this.updateTotalPriceToScreen();
   }
 
   render() {
