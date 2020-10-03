@@ -1,14 +1,12 @@
 print = console.log;
-class Product {
 
+class Product {
     constructor(name, imageurl, description, price){
         this.name = name;
         this.imageurl = imageurl;
         this.description = description;
         this.price = price;
     }
-
-
 }
 
 class ProductItem { // consider changing the class name
@@ -27,6 +25,9 @@ class ProductItem { // consider changing the class name
               <h2>${this.product.name}</h2>
               <h3>${this.product.price}</h3>
               <p> ${this.product.description}</p>
+              <button>
+              Add to cart
+              </button>
             </div>
         </div>
         `;
