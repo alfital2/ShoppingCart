@@ -9,9 +9,41 @@ class Product {
     }
 }
 
-class ProductItem { // consider changing the class name
+class ElementAttribute {
+    constructor(attrName,attrValue){
+        this.name = attrName;
+        this.value = attrValue;
+    }
+}
+
+class Component {
+    constructor(renderHookId){
+        this.hook = renderHookId;
+    }
+
+    createRootElement(tag,cssClass,attributes){
+        const rootElement = document.createElement(tag);
+        if(cssClass){
+            rootElement.className = cssClass;
+        }
+        if(attributes && attributes.length > 0){
+            for(const attr of attributes)
+            {
+                rootElement.setAttribute(attr.name, attr.value);
+            }
+        }
+        console.log(this.hook);
+        console.log(document.getElementById(this.hook));
+        document.getElementById(this.hook).append(rootElement);
+        return rootElement;
+    }
+}
+
+
+class ProductItem extends Component{ // consider changing the class name
     
-    constructor (product){
+    constructor (product,renderHookId){
+        super(renderHookId);
         this.product = product;
     }  
 
@@ -20,8 +52,7 @@ class ProductItem { // consider changing the class name
     }   
 
     render(){
-        const elementToBeAdded = document.createElement('li');
-        elementToBeAdded.className = 'product-item';
+        const elementToBeAdded = this.createRootElement('li','product-item');
         elementToBeAdded.innerHTML = `
         <div>
             <img src="${this.product.imageurl}" alt= ${this.product.name}">
@@ -37,11 +68,10 @@ class ProductItem { // consider changing the class name
         `;
         const AddToCartButton = elementToBeAdded.querySelector('button')
         AddToCartButton.addEventListener('click',this.addToCart.bind(this))
-        return elementToBeAdded;
     }
 }
 
-class ProductList{
+class ProductList extends Component{
     products = [
         new Product(
           'Fender STRAT® Amircan',
@@ -54,28 +84,39 @@ class ProductList{
           'https://d2emr0qhzqfj88.cloudfront.net/s3fs-public/products/DP180W.png',
           'The Air Norton S™ is the Strat® replacement version of the full-size Air Norton™. It’s warm sounding, very well balanced, and has the same unique tonal characteristics as the original.',
           79.99
+        ),
+        new Product(
+          'Vintage Staggered Strat (SSL-1)',
+          'https://images.guitarguitar.co.uk/cdn/large/160/13121714110231f.jpg',
+          'The Vintage Staggered( SSL-1) delivers all the authentic chime and bell tone enjoyed by Stratocaster players during the 50s.',
+          59.00
         )
       ];
 
-      constructor() {}
+      constructor(renderHookId) {
+          super(renderHookId);
+      }
 
-      render(){
-          const productsList = document.createElement('ul');
-          productsList.className = 'product-list';
-          for (const product of this.products){
-            print(product);
-            const productToBeAdded = new ProductItem(product);
-            const renderedProduct = productToBeAdded.render();
-            productsList.append(renderedProduct);
-        }
-        return productsList;
+    render(){
+    this.createRootElement('ul', 'product-list', [
+        new ElementAttribute('id', 'prod-list')
+    ]);
+
+    for (const product of this.products){
+        const productToBeAdded = new ProductItem(product,'prod-list');
+        productToBeAdded.render();
     }
+  }
 }
 
-class ShoppingCart {
+class ShoppingCart extends Component{
   
   items =[];
   
+  constructor(hookId){
+      super(hookId);
+  }
+
   set cartItems(value){
      this.items = value;
   }
@@ -87,7 +128,6 @@ class ShoppingCart {
 
   updateTotalPriceToScreen(){
     this.totalAmount.innerHTML = `<h2> Total \$${this.totalPrice.toFixed(2)}</h2>`;
-
   }
 
   addProduct(product) {
@@ -98,32 +138,29 @@ class ShoppingCart {
   }
 
   render() {
-    const cartElement = document.createElement('section');
-    cartElement.className = 'cart';
+    const cartElement = this.createRootElement('section','cart');
     cartElement.innerHTML= `
         <h2> Total \$${0}</h2>
         <button> Order Now! </button>
     `;
     this.totalAmount = cartElement.querySelector('h2');
-    return cartElement;
   }
 }
 
 class Shop {
 
     render(){
-        const renderHook = document.getElementById('app');
-        this.cart = new ShoppingCart();
+        this.cart = new ShoppingCart('app');
         const carEl = this.cart.render();
-        const productsList = new ProductList().render();
-        
-        renderHook.append(carEl);
-        renderHook.append(productsList);
+        const productsList = new ProductList('app');
+        productsList.render();
     }
 }
 
 
 class App{
+    static cart;
+
     static init(){
         const shop =  new Shop();
         shop.render();
