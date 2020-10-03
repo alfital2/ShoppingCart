@@ -1,3 +1,40 @@
+.cart {
+    margin: 5rem 2rem;
+    border: 2px solid #540075;
+    border-radius: 10px;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .cart h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #540075;
+  }
+
+
+  button {
+    background: #540075;
+    color: white;
+    border: 1px solid #540075;
+    border-radius: 5px;
+    padding: 0.5rem 2rem;
+    font: inherit;
+    cursor: pointer;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  button:hover,
+  button:active {
+    background: #790fa3;
+    border-color: #790fa3;
+  }
+  
+
 .product-list {
     list-style: none;
     margin: 0 2rem;
@@ -29,24 +66,3 @@
     margin: 0 0 1rem 0;
     font-family: Arial, Helvetica, sans-serif;
   }
-
-  button {
-    background: #540075;
-    color: white;
-    border: 1px solid #540075;
-    border-radius: 5px;
-    padding: 0.5rem 2rem;
-    font: inherit;
-    cursor: pointer;
-  }
-  
-  button:focus {
-    outline: none;
-  }
-  
-  button:hover,
-  button:active {
-    background: #790fa3;
-    border-color: #790fa3;
-  }
-  
