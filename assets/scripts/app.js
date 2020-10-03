@@ -1,9 +1,9 @@
 print = console.log;
 class Product {
 
-    constructor(name, image, description, price){
+    constructor(name, imageurl, description, price){
         this.name = name;
-        this.image = image;
+        this.imageurl = imageurl;
         this.description = description;
         this.price = price;
     }
@@ -11,7 +11,25 @@ class Product {
 
 }
 
+class ProductItem { // consider changing the class name
+    
+    constructor (product){
+        this.product = product;
+    }
 
+    render(){
+        const elementToBeAdded = document.createElement('li');
+        elementToBeAdded.innerHTML = `
+        <div>
+            <img src="${this.product.imageurl}" alt= ${this.product.name}">
+            <h2>${this.product.name}</h2>
+            <h3>${this.product.price}</h3>
+            <p> ${this.product.description}</p>
+        </div>
+        `;
+        return elementToBeAdded;
+    }
+}
 
 class ProductList{
     products = [
@@ -28,8 +46,22 @@ class ProductList{
           79.99
         )
       ];
+
+      constructor() {}
+
+      render(){
+          const renderHook = document.getElementById('app');
+          const productsList = document.createElement('ul');
+          for (const product of this.products){
+            print(product);
+            const productToBeAdded = new ProductItem(product);
+            const renderedProduct = productToBeAdded.render();
+            productsList.append(renderedProduct);
+        }
+            renderHook.append(productsList);
+    }
+
 }
 
-let products = new ProductList();
-
-print(products)
+let productsList = new ProductList();
+productsList.render();
