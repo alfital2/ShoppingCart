@@ -32,8 +32,7 @@ class Component {
                 rootElement.setAttribute(attr.name, attr.value);
             }
         }
-        console.log(this.hook);
-        console.log(document.getElementById(this.hook));
+
         document.getElementById(this.hook).append(rootElement);
         return rootElement;
     }
@@ -137,12 +136,20 @@ class ShoppingCart extends Component{
     this.updateTotalPriceToScreen();
   }
 
+  handleOrderNowButton(){
+    for (const itemIndex in this.items){
+        localStorage.setItem(itemIndex,  JSON.stringify(this.items[itemIndex]));
+    }
+    window.location.href = 'orderPage.html' ;
+  }
+
   render() {
     const cartElement = this.createRootElement('section','cart');
     cartElement.innerHTML= `
         <h2> Total \$${0}</h2>
         <button> Order Now! </button>
     `;
+    cartElement.querySelector('button').addEventListener('click',()=>this.handleOrderNowButton());
     this.totalAmount = cartElement.querySelector('h2');
   }
 }
