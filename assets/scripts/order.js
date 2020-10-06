@@ -24,9 +24,13 @@ class OrdersSummary{
 
       this.itemsToOrder.forEach((obj) =>{
         let key = JSON.stringify(obj);
-        let appear = (this.duplicates[key] || 0) + 1;
-        this.duplicates.set(key,appear)
-        this.duplicates[key] = (this.duplicates[key] || 0) + 1
+        if (this.duplicates.has(key)){
+          let appear = this.duplicates.get(key) +1;
+          this.duplicates.set(key,appear)
+        }
+        else{
+          this.duplicates.set(key,1)
+        }
       });
     }
   
@@ -38,7 +42,8 @@ class OrdersSummary{
         elementToAdd.className='product-summary';
         elementToAdd.innerHTML = `
         <div>
-          <h2> ${itemProperties.name} + ${val} </h2>
+          <h2> ${itemProperties.name} x ${val} </h2>
+          <img src=${itemProperties.imageurl}>
         </div>
         `;
         document.getElementById('order').append(elementToAdd);
