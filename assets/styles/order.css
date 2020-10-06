@@ -45,9 +45,17 @@ button:active {
   display: table-row; 
 }
 .td { 
+  border : 1px solid #ededf3;
   padding: 5px;
+  border-radius: 10px;
   display: table-cell;
   vertical-align: middle;
+}
+
+.td b{
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
 }
 
 .td img{
