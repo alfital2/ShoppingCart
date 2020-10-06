@@ -26,19 +26,28 @@ button:active {
 
 
 .table {
-  border : solid #0000FF;
+  border : 1px solid #c7c7dd;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   border-radius: 10px;
   display: table;
-  width: 500px;
+  width: 50%;
+  max-width: 700px;
+  text-align: left ;
+  font-family: Arial, Helvetica, sans-serif;
+
 }
 .tr { 
 
   display: table-row; 
 }
 .td { 
-
+  padding: 5px;
   display: table-cell;
-
+  vertical-align: middle;
 }
 
 .td img{
