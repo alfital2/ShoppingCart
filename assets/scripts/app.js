@@ -32,7 +32,10 @@ class Component {
                 rootElement.setAttribute(attr.name, attr.value);
             }
         }
-
+        console.log("--------------------");
+        console.log(this.hook , tag ,cssClass);
+        console.log(document.getElementById(this.hook));
+        console.log(document.getElementById('order'));
         document.getElementById(this.hook).append(rootElement);
         return rootElement;
     }
@@ -137,6 +140,8 @@ class ShoppingCart extends Component{
   }
 
   handleOrderNowButton(){
+    console.log("HERE!!HERE!!!!!$#%^&*(%$#!");
+
     for (const itemIndex in this.items){
         localStorage.setItem(itemIndex,  JSON.stringify(this.items[itemIndex]));
     }
@@ -144,6 +149,7 @@ class ShoppingCart extends Component{
   }
 
   render() {
+      console.log("123")
     const cartElement = this.createRootElement('section','cart');
     cartElement.innerHTML= `
         <h2> Total \$${0}</h2>
@@ -156,7 +162,7 @@ class ShoppingCart extends Component{
 
 class Shop {
 
-    render(){
+      render(){
         this.cart = new ShoppingCart('app');
         const carEl = this.cart.render();
         const productsList = new ProductList('app');
@@ -168,6 +174,7 @@ class Shop {
 class App{
 
     static init(){
+        window.localStorage.clear();
         const shop =  new Shop();
         shop.render();
         this.cart = shop.cart;
