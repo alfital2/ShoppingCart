@@ -1,0 +1,46 @@
+button {
+  background: #540075;
+  color: white;
+  border: 1px solid #540075;
+  border-radius: 5px;
+  padding: 0.5rem 2rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover{
+  background: #790fa3;
+  border-color: #790fa3;
+}
+
+button:active {
+  background: #8842b1;
+  border-color: #8842b1;
+}
+
+
+
+
+.table {
+  border : solid #0000FF;
+  border-radius: 10px;
+  display: table;
+  width: 500px;
+}
+.tr { 
+
+  display: table-row; 
+}
+.td { 
+
+  display: table-cell;
+
+}
+
+.td img{
+  width: 100px;
+}

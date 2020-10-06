@@ -25,7 +25,7 @@ class OrdersSummary{
       this.itemsToOrder.forEach((obj) =>{
         let key = JSON.stringify(obj);
         if (this.duplicates.has(key)){
-          let appear = this.duplicates.get(key) +1;
+          let appear = this.duplicates.get(key) +1;//increment the amount of appereance by 1
           this.duplicates.set(key,appear)
         }
         else{
@@ -38,15 +38,20 @@ class OrdersSummary{
 
       this.duplicates.forEach((val, item) => {
         let itemProperties = JSON.parse(item);
-        const elementToAdd = document.createElement('div');
-        elementToAdd.className='product-summary';
-        elementToAdd.innerHTML = `
-        <div>
-          <h2> ${itemProperties.name} x ${val} </h2>
-          <img src=${itemProperties.imageurl}>
+        // const elementToAdd = document.createElement('div');
+        // elementToAdd.className='product-list';
+        // elementToAdd.innerHTML = `
+        document.body.innerHTML +=`
+        <div class="table">
+          <div class="tr">
+            <div class="td">${itemProperties.name} x ${val}</div>
+            <div class="td">${itemProperties.description}</div>
+            <div class="td" ><img src=${itemProperties.imageurl}></div>
+            <div class="td" >${itemProperties.price * val}</div>
+          </div>
         </div>
         `;
-        document.getElementById('order').append(elementToAdd);
+        //document.getElementById('order').append(elementToAdd);
       });
       
     }

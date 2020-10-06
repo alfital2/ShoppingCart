@@ -77,19 +77,19 @@ class ProductList extends Component{
     products = [
         new Product(
           'Fender STRAT® Amircan',
-          'https://www.kley-zemer.co.il/Media/Uploads/4(40).jpg',
+          './assets/images/4(40).jpg',
           'Dapper and bold – the fender Strat® commands attention when it enters a room.',
           1099.99
         ),
         new Product(
           'DiMarzio AIR NORTON S',
-          'https://d2emr0qhzqfj88.cloudfront.net/s3fs-public/products/DP180W.png',
+          './assets/images/IMG_0101.jpg',
           'The Air Norton S™ is the Strat® replacement version of the full-size Air Norton™. It’s warm sounding, very well balanced, and has the same unique tonal characteristics as the original.',
           79.99
         ),
         new Product(
           'Vintage Staggered Strat (SSL-1)',
-          'https://images.guitarguitar.co.uk/cdn/large/160/13121714110231f.jpg',
+          './assets/images/13121714110231f.jpg',
           'The Vintage Staggered( SSL-1) delivers all the authentic chime and bell tone enjoyed by Stratocaster players during the 50s.',
           59.00
         )
