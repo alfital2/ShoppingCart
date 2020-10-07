@@ -70,7 +70,7 @@ class ProductItem extends Component{ // consider changing the class name
 class ProductList extends Component{
     products = [
         new Product(
-          'Fender STRAT® Amircan',
+          'fender STRAT american standart ®',
           './assets/images/4(40).jpg',
           'Dapper and bold – the fender Strat® commands attention when it enters a room.',
           1099.99
