@@ -1,12 +1,16 @@
-button {
-  background: #540075;
-  color: white;
-  border: 1px solid #540075;
-  border-radius: 5px;
-  padding: 0.5rem 2rem;
-  font: inherit;
-  cursor: pointer;
-}
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}  
+
+  button {
+    background: #540075;
+    color: white;
+    border: 1px solid #540075;
+    border-radius: 5px;
+    padding: 0.5rem 2rem;
+    font: inherit;
+    cursor: pointer;
+  }
 
 button:focus {
   outline: none;
@@ -23,34 +27,35 @@ button:active {
 }
 
 
-
-
 .table {
   border : 1px solid #c7c7dd;
-  position: fixed;
-  top: 20%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
   border-radius: 10px;
   display: table;
-  width: 50%;
-  max-width: 700px;
+  width: 60%;
+  max-width: 900px;
   text-align: left ;
-  font-family: Arial, Helvetica, sans-serif;
+  margin:auto; 
 
 }
 .tr { 
-
   display: table-row; 
+  border-top:  1px solid #e4e4ee;
 }
+
 .td { 
-  border : 1px solid #ededf3;
   padding: 5px;
-  border-radius: 10px;
+  border-top:  1px solid #e4e4ee;
   display: table-cell;
   vertical-align: middle;
 }
+
+.tdHead{
+  padding: 5px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+
 
 .td b{
 text-overflow: ellipsis;
@@ -60,4 +65,18 @@ overflow: hidden;
 
 .td img{
   width: 100px;
+}
+
+.container{
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align:center;
+}
+
+.confirm{
+  margin:auto; 
+  padding: 10px;
 }

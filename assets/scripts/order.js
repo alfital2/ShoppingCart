@@ -50,6 +50,29 @@ class OrdersSummary{
       return outPut;
     }
 
+    creatTableHeadRow(){
+      return(`
+          <div class="tr">
+            <div class="tdHead"> Product</div>
+            <div class="tdHead">Amount</div>
+            <div class="tdHead">Prouct Image</div>
+            <div class="tdHead">Product price </div>
+          </div>
+        `);
+    }
+
+    creatTableSummaryRow(){
+      return ( ` 
+      <div class="tr">
+        <div class="td"> <b>Total amount and price: </b></div>
+        <div class="td">${this.countAmountOfProductsInCart()}</div>
+        <div class="td"></div>
+        <div class="td"><b>$ ${this.calcTotalPrice().toFixed(2)}</b></div>
+      </div>
+      `);
+    }
+
+
     calcTotalPrice(){
       return this.itemsToOrder.reduce(( prev,curItem)=> prev+= curItem.price,0);
 
@@ -57,26 +80,32 @@ class OrdersSummary{
 
     countAmountOfProductsInCart(){
       let totalProductsInCart=0;
-      // for (const [key,val] of this.itemsWithoutDuplications){
-      //   totalProductsInCart += val;
-      // }
+      for (const [key,val] of this.itemsWithoutDuplications){
+        totalProductsInCart += val;
+      }
       return totalProductsInCart;
     }
 
+    handleConfirmButton(){
+      alert("thanks for using the store! you made great choices! I hope you enjoyed using it!")    }
+
     render(){
         document.body.innerHTML +=`
-        <div class="table">
-        ${this.creatTableBodyElements()}
-        <div class="tr">
-          <div class="td"> 
-          Total price: 
+        
+        <div class="container">
+        <h2>Order summary:</h2>
+          <div class="table">
+            ${this.creatTableHeadRow()}
+            ${this.creatTableBodyElements()}
+            ${this.creatTableSummaryRow()}
+
           </div>
-          <div class="td">${this.countAmountOfProductsInCart()}</div>
-          <div class="td">f</div>
-          <div class="td"><b>$ ${this.calcTotalPrice()}</b></div>
+          <div class="confirm">
+          <button>confirm and order! </button>
+          </div>
         </div>
-        </div>
-        `;
+      `;
+      document.body.querySelector('button').addEventListener('click',()=>this.handleConfirmButton())
     }
   
   }//CLASS ends here
