@@ -1,6 +1,8 @@
 # ShoppingCart
 
 In this project i wanted to demonstrate my abilities to use the principles of OOP by using classes and inheritance. <br>
+
+The shopping cart allow you to add products to your cart, and show you the current price of it.<br>
 Then , you will be able to press the order now button - and you will be transfered to a summary window to confirm the order.<br>
 
 link: https://alfital2.github.io/ShoppingCart/
